@@ -32,9 +32,9 @@ public class GeneralConfiguration {
     @Bean
     public DataSource dataSource(){
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-        dataSourceBuilder.url("jdbc:h2:mem:testdb");
+        dataSourceBuilder.url("jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE");
         dataSourceBuilder.driverClassName("org.h2.Driver");
-        dataSourceBuilder.username("SA");
+        dataSourceBuilder.username("sa");
         dataSourceBuilder.password("");
 
         return dataSourceBuilder.build();

@@ -1,10 +1,12 @@
 package com.fundamentosplatzi.sprintboot.fundamentos.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "post")
-public class Post {
+public class Posts {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_post",unique = true,nullable = false)
@@ -15,12 +17,14 @@ public class Post {
 
     /* Relacion con la entity User*/
     @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private User user;
 
-    public Post() {
+    public Posts() {
     }
 
-    public Post(String description, User user) {
+    public Posts(String description, User user) {
         this.description = description;
         this.user = user;
     }
